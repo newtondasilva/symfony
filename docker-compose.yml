@@ -27,7 +27,7 @@ services:
       - net1
     volumes:
       - '/site:/var/www/html'
-      - '/site/certs:/etc/ssl'
+      - './certs:/etc/ssl'
       - '/etc/passwd:/etc/passwd'
       - '/etc/group:/etc/group'
       - './config/apache2.conf:/etc/apache2/apache2.conf'
