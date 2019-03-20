@@ -30,11 +30,11 @@ test2:
     - echo "Do another parallel test here"
     - echo "For example run a lint test"
    
-deploy1:
-  stage: deploy
+deploy:
+  stage: build
   only: 
     - master
   script:
     - echo "Do your deploy here"
     - cd /
-    - pwd
+    - ls
