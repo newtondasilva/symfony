@@ -26,23 +26,23 @@ services:
     networks:
       - net1
     volumes:
-      - '/site:/var/www/html'
-      - '/site/certs:/etc/ssl'
-
       - '/etc/passwd:/etc/passwd'
       - '/etc/group:/etc/group'
       - '/etc/localtime:/etc/localtime:ro'
       - './config/hosts:/etc/hosts'
 
-      - './config/ldap.conf:/etc/ldap/ldap.conf'
       - './config/apache2.conf:/etc/apache2/apache2.conf'
       - './config/default-ssl.conf:/etc/apache2/sites-available/default-ssl.conf'
       - './config/default-ssl.conf:/etc/apache2/sites-enabled/default-ssl.conf'
 
       - './config/ports.conf:/etc/apache2/ports.conf'
       - './config/php.ini:/etc/php/7.2/apache2/php.ini'
+      - './config/ldap.conf:/etc/ldap/ldap.conf'
+      - '/site/certs:/etc/ssl'
 
-      - ./logs/apache/:/var/log/apache2
+      - '/site:/var/www/html'
+
+      - './logs/apache/:/var/log/apache2'
     deploy:
       resources:
         limits:
