@@ -9,5 +9,5 @@ deploy:
   only:
     - master
   script:
-    - cd /
-    - ls
+    - cd /site/sintranet
+    - git pull origin master
