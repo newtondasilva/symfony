@@ -9,6 +9,5 @@ deploy:
   only:
     - master
   script:
-    - echo "Do your deploy here"
     - cd /
     - ls
