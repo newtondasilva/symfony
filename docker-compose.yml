@@ -26,6 +26,8 @@ services:
     networks:
       - net1
     volumes:
+      - '/site:/var/www/html'
+      - './certs:/etc/ssl'
       - '/etc/passwd:/etc/passwd'
       - '/etc/group:/etc/group'
       - '/etc/localtime:/etc/localtime:ro'
