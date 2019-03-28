@@ -43,11 +43,6 @@ services:
       - '/site:/var/www/html'
 
       - './logs/apache/:/var/log/apache2'
-    deploy:
-      resources:
-        limits:
-          cpus: '0.5'
-          memory: 512M
     ports:
       - '80:80'
       - '443:443'
