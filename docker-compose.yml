@@ -20,7 +20,8 @@ services:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
   apache:
-    image: 1and1internet/ubuntu-16-apache-php-7.2
+    build: ./config/apache
+    #image: 1and1internet/ubuntu-16-apache-php-7.2
     restart: always
     container_name: apache
     networks:
