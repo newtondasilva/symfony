@@ -17,7 +17,7 @@ services:
     ports:
       - '3306:3306'
     environment:
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: ds2346GER054ia
       MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
   apache:
     build: ./config/apache
@@ -31,6 +31,7 @@ services:
       - '/etc/group:/etc/group'
       - '/etc/localtime:/etc/localtime:ro'
       - './config/hosts:/etc/hosts'
+      - '/site/pcounter:/pcounter'
 
       - './config/apache2.conf:/etc/apache2/apache2.conf'
       - './config/default-ssl.conf:/etc/apache2/sites-available/default-ssl.conf'
