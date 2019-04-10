@@ -1,0 +1,1 @@
+* * * * /site/sintranet/app/console scheduler:execute --env=prod
