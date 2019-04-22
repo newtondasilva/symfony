@@ -26,3 +26,7 @@ RUN ln -s /var/www/html /site
 
 RUN apt install cron -y
 COPY cron /var/spool/cron/crontabs/root
+
+# INSTALL WKHTMLTOPDF
+COPY wkhtmltox.deb /tmp/wkhtmltox.deb
+RUN apt install /tmp/wkhtmltox.deb -yq
