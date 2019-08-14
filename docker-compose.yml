@@ -1,6 +1,6 @@
 version: '3'
 networks:
-  net1:
+  net:
     driver: bridge
 
 services:
@@ -10,36 +10,30 @@ services:
     container_name: db
     volumes:
       - './mysql/data:/var/lib/mysql'
-      #- './config/mysql.conf.d:/etc/mysql/mysql.conf.d'
       - '/etc/localtime:/etc/localtime:ro'
     networks:
-      - net1
+      - net
     ports:
       - '3306:3306'
     environment:
-      MYSQL_ROOT_PASSWORD: ds2346GER054ia
-      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+      MYSQL_ROOT_PASSWORD: dnkr0102
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'no'
   apache:
     build: ./config/apache
-    #image: 1and1internet/ubuntu-16-apache-php-7.2
     restart: always
-    container_name: apache
+    container_name: symfony-apache
     networks:
-      - net1
+      - net
     volumes:
-      - '/etc/passwd:/etc/passwd'
-      - '/etc/group:/etc/group'
       - '/etc/localtime:/etc/localtime:ro'
-      - './config/hosts:/etc/hosts'
-      - '/site/pcounter:/pcounter'
 
-      - './config/apache2.conf:/etc/apache2/apache2.conf'
-      - './config/default-ssl.conf:/etc/apache2/sites-available/default-ssl.conf'
-      - './config/default-ssl.conf:/etc/apache2/sites-enabled/default-ssl.conf'
-
-      - './config/ports.conf:/etc/apache2/ports.conf'
-      - './config/php.ini:/etc/php/7.2/apache2/php.ini'
-      - './config/ldap.conf:/etc/ldap/ldap.conf'
+      - './config/apache/apache2.conf:/etc/apache2/apache2.conf'
+      - './config/apache/default-ssl.conf:/etc/apache2/sites-available/default-ssl.conf'
+      - './config/apache/000-default.conf:/etc/apache2/sites-available/000-default.conf'
+      - './config/apache/default-ssl.conf:/etc/apache2/sites-enabled/default-ssl.conf'
+      - './config/apache/ports.conf:/etc/apache2/ports.conf'
+      - './config/apache/php.ini:/etc/php/7.2/apache2/php.ini'
+      - './config/apache/ldap.conf:/etc/ldap/ldap.conf'
       - './certs:/etc/ssl'
 
       - '/site:/var/www/html'
@@ -49,12 +43,3 @@ services:
     ports:
       - '80:80'
       - '443:443'
-  #elk:
-  #  image: willdurand/elk
-  #  ports:
-  #      - 81:80
-  #  volumes:
-  #      - ./elk/logstash:/etc/logstash
-  #      - ./elk/logstash/patterns:/opt/logstash/patterns
-    #volumes_from:
-    #    - apache
