@@ -30,3 +30,9 @@ COPY cron /var/spool/cron/crontabs/root
 # INSTALL WKHTMLTOPDF
 COPY wkhtmltox.deb /tmp/wkhtmltox.deb
 RUN apt install /tmp/wkhtmltox.deb -yq
+
+RUN useradd www
+
+COPY php.ini /etc/php/7.2/apache2/php.ini
+COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
+RUN service apache2 restart
